@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul { /* Lista */
+    list-style: none; /* Remove o estilo da lista */ 
+}
+
+body { /* Corpo da página */
+    font-family: "Roboto", sans-serif;
+    background-image: url(./assets/bg-copa-catar.png);
+    color: white;
+    background-position: center 55.6% ;
+}
+
+#app {
+    width: fit-content;
+    margin: 32px auto;
+}
+
+header { /* Area de cabeçalho */
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header img {
+    height: 250px;
+}
+
+/* Cartões dos jogos */
+
+#cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Dá um espaço entre os cards */
+}
+
+.card {
+    text-align: center;
+    padding: 32px 23px; /* 32px em cima e em baixo, 23px nas laterais */
+
+    background-color: rgba(0, 0, 0, 0.446);
+    border-radius: 6px;
+    text-transform: uppercase;
+    border-left: 2px solid aqua;
+    border-bottom: 4px solid aqua;
+
+}
+
+.card h2 {
+    padding: 8px 16px;
+    border: 1px solid rgba(227, 232, 232, 0.69);
+    align-items: center;
+
+    display: flex;
+    border-radius: 6px;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 53px;
+    color: aqua;
+}
+
+.card h2 span { /* Data dos jogos */
+    color: white;
+    font-size: 20px;
+}
+
+.card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 300px;        /* Largura do card */
+      /* height: 200px;  Altura do card */
+}
+
+.card ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card ul li + li {
+    border-top: 0.4px solid aqua;
+    padding-top: 28px;
+}
+
+.card ul li strong { /* Hora dos jogos */
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 125%;
+    color: #ffffff;
+}
+
+/* Formas de aplicar transições e efeitos em CSS */
+
+.card ul li img:hover, .card ul li strong:hover, header img:hover, .card h2:hover { /* Aplica um efeito de ampliação nesses seletores */
+    transform: scale(1.1);
+}
+
+.card ul li img:hover, .card ul li strong:hover, header img:hover, .card h2:hover { /* Aplica uma transição ao elementos, efeito mais suave */
+    transition: transform 0.3s;
+}
+
+@keyframes appear { /* Outra forma de animação, utilizando o @keyframes*/
+    0% {
+      transform: translatex(-75px); /* x é o heixo vertical, no caso o cartão ira aparecer do canto da página*/
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  } 
+
+.card { /* Depois de colocar o @keyframes colocamos a animação que escolhemos */
+    opacity: 0;
+    animation: appear .25s forwards; /* 'forwards' Mantem as opões do keyframes. Temos que colocar o nome da animação que colocamos lá em cima no @keyframes */ 
+  }
+
+.card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Alterar a página de acordo com o dispositivo */
+
+@media (min-width: 700px) {
+    #cards {
+        flex-direction: row;
+    }
+}
